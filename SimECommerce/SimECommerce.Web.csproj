@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <UserSecretsId>ac3ecb46-a50b-451f-9c81-defea85dca14</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\HandlerImage.cs" />
+    <Compile Remove="ViewModels\HandlerImage.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Categories\Create.cshtml" />
+    <Content Remove="Views\Categories\Delete.cshtml" />
+    <Content Remove="Views\Categories\Details.cshtml" />
+    <Content Remove="Views\Categories\Edit.cshtml" />
+    <Content Remove="Views\Categories\_CategorieList.cshtml" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Middleware\Middleware.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+</Project>

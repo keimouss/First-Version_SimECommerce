@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewData["Title"] = "MonCatalogue";
+}
+
+
+
+        <!-- Début partie principale -->
+
+        @*<div class="card-body">
+            <div>
+                <div id="affichageProduct">
+
+                </div>
+            </div>
+        </div>*@
+        <!-- Fin partie principale -->
+   
+   
+    
+
+ 
+
+
+
+
+@section Scripts {
+    @*<script>
+        jQuery(document).ready(function () {
+            $(".ui-btns").hover(
+                function (data) {
+                    var idparentcateg = data.currentTarget.dataset.idparentcategorie;
+                    var togdiv = $('#dropdown-' + idparentcateg);
+                    //var mondiv = $(data.currentTarget).children(".table-hover")[0];
+                    var mondiv = togdiv.children(".table-hover")[0];
+                    $.ajax({
+                        type: "GET",
+                            dataType: 'html',
+                            url: "https://localhost:44329/Catalog/GetCategorie/" + idparentcateg,
+                            async: true,
+                            contentType: "application/x-www-form-urlencoded",
+                            success: (msg) => {
+                                $(togdiv).empty();
+                                if ($(msg).length > 0) {
+                                    $(togdiv).append(msg);
+                                    //$(mondiv).append(msg);
+                                   //console.log(mondiv);
+                                }
+                            },
+                            error:
+                                (error) => {
+                                  console.log("error", error);
+                                }
+                    });
+
+                    $('#dropdown-' + idparentcateg).show();
+                   
+                },
+                function (data) {
+                    var idparentcateg = data.currentTarget.dataset.idparentcategorie;
+                    $('#dropdown-' + idparentcateg).hide();
+                });
+
+
+
+        });
+
+        //jQuery(document).ready(function () {
+
+
+        //    $(".ui-btns").hover(
+        //        function (data) {
+        //            var idparentcateg = data.currentTarget.dataset.idparentcategorie;
+        //            var mondiv = $(data.currentTarget).children(".table-hover")[0];
+        //            //console.log(data.currentTarget);
+        //            //console.log($(data.currentTarget));
+        //            //console.log(idcateg);
+        //            $.ajax({
+        //                type: "GET",
+        //                dataType: 'html',
+        //                url: "https://localhost:44329/Catalog/GetCategorie/" + idparentcateg,
+        //                async: true,
+        //                contentType: "application/x-www-form-urlencoded",
+        //                success: (msg) => {
+        //                    //console.log(msg);
+        //                    //console.log($(mondiv));
+        //                    $(mondiv).empty();
+        //                    if ($(msg).length > 0) {
+        //                        //msg.forEach(function (element) {
+        //                        //    //console.log(element
+        //                        //    $(mondiv).append(element);
+        //                        //});
+        //                        $(mondiv).append(msg);
+        //                    }
+        //                },
+        //                error:
+        //                    (error) => {
+        //                       // console.log("error", error);
+        //                        //console.log(idcateg);
+        //                    }
+        //            });
+        //            $(mondiv).attr("hidden", false);
+        //        },
+        //        function (data) {
+        //            $($(data.currentTarget).children(".table-hover")[0]).attr("hidden", true);
+        //        }
+        //    );
+
+        //});
+
+    </script>*@
+}

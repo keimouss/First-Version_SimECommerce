@@ -1,0 +1,29 @@
+﻿@model IEnumerable<SimECommerce.Models.Category>
+
+<div class="row Catalog-category-grid">
+    @foreach (var iCategorie in Model)
+    {
+        <!--On fait une iteration les catégories-->
+        <div class="col-4">
+            <div class="item-box">
+                <div class="category-item" id="@iCategorie.Id">
+
+                    <h2 class="title">
+                        <a href="#" title="Show products in category @iCategorie.Name">
+                            @iCategorie.Name
+                        </a>
+                    </h2>
+                    <div class="picture">
+                        <a href="#" title="Show products in category @iCategorie.Name">
+                            <img alt="Picture for category /@iCategorie.Name" src="ImageProducts/ViewImage/@iCategorie.PictureId" title="Show products in category /@iCategorie.Name">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+       
+    }
+
+</div>
+

@@ -1,0 +1,178 @@
+﻿@model IEnumerable<SimECommerce.Models.Product>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>
+                @*@Html.DisplayNameFor(model => model.Name)*@
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+           
+                    <tr>
+
+                        <td>
+                            <div class="img-item" id="img-item-@item.Id" name="@item.Name" data-idproduct="@item.Id">
+                                <a>
+                                    <div class="card-img">
+                                        <img  id="img-thumb-@item.Id" src="" />
+                                        @*<script type="text/javascript" src="~/js/AJaxObtenirPicture.js">
+                                            document.getElementById("img-thumb").src =GetPictures(@item.Id);
+                                        </script>*@
+                                    </div>
+                                </a>
+                            </div>
+                            @Html.DisplayFor(modelItem => item.Name)
+                            @*<br />*@
+                        </td>
+                        <td>
+                            <input type="button" class="btn" name="@item.Name" data-idproduct="@item.Id" data-quantite="1" value="Ajouter au Panier" />
+                        </td>
+                    </tr>
+            
+         }
+
+    </tbody>
+</table>
+    <script>
+       
+
+        $(document).ready(function () {
+
+           // console.log($(".img-thumbnail"));
+            $(".img-item").each(function (element) {
+               // console.log($(".img-thumbnail")[element]);
+
+                var idproducts = $(".img-item")[element].id.replace("img-item-","") ;
+                //var imgdivs = $(".img-item")[element];
+                //var imgas = $(".img-item")[element].getElementsByTagName("IMG");
+               //console.log(idproducts);
+                GetPictures(idproducts);
+                
+            });
+
+
+            $(".btn").click(function (data) {
+                //console.log(data);
+                var idproduct = data.currentTarget.dataset.idproduct;
+                //var quantite = data.currentTarget.dataset.quantite;
+                $.ajax({
+                    type: "Post",
+                    dataType: 'text',
+                    url: "https://localhost:44329/Catalog/AjoutPanier/" + idproduct,
+                    async: true,
+                    contentType: "application/json",
+                    success: (msg) => {
+                       
+                        //renseigner les elements du div "flyout-panier" et "qteProduits"
+                        var lpanier = $.parseJSON(msg);
+                        //Modifie la qté de produits du panier
+                        var $qteproducts = $("#qteproducts");
+                        $qteproducts.empty();
+                        $qteproducts.append(lpanier.qteProduits);
+
+                        //renseigne le mini-panier
+                      
+                        $("#countPanier").empty();
+                        $("#countPanier").append("Vous avez: " + lpanier.qteProduits + "article(s).");
+
+                        $("#itemsPanier").empty();
+                        for (var i = 0; i < lpanier.lignes.length; i++) {
+                            //console.log("lignes:" + lpanier.lignes[i].nomProduit);
+                            $("#itemsPanier").append('<p>' + lpanier.lignes[i].nomProduit + '</p>');
+                        }
+                        
+
+                        $("#totalPanier").empty();
+                        $("#totalPanier").append("Total Panier :" + lpanier.totalPanier);
+                        //console.log(lpanier);
+                        console.log("quantité " + lpanier.qteProduits);
+                        for (var i = 0; i < lpanier.lignes.length; i++) {
+                            console.log("lignes:"+lpanier.lignes[i].nomProduit);
+                        }
+                         
+                    },
+                    error:
+                        (error) => {
+                            console.log("error", error);
+                            console.log(idproduct);
+                        }
+                });
+
+            });
+
+            $("#viewlepanier").mouseenter(function () {
+                
+                    console.log("Opened")
+                //$("#flyout-panier").attr("hidden", false);
+                $('.modal').modal('show');
+            })
+             .mouseleave(function () {
+                 $('.modal').modal('hide');
+                 //$("#flyout-panier").attr("hidden", true);
+             });
+
+
+            $("#viewlepanier").click(function (data) {
+               
+                console.log(data);
+                $.ajax({
+                    type: "Get",
+                    dataType: 'text',
+                    url: "https://localhost:44329/Catalog/LePanier",
+                    async: true,
+                    contentType: "application/json",
+                    success: (msg) => {
+                        console.log(msg);
+                        //var $affichage = $("#affichageProduct");
+                        //$affichage.empty();
+                        //$affichage.append(msg);
+
+                    },
+                    error:
+                        (error) => {
+                            console.log("error", error);
+                        }
+                });
+            });
+        });
+
+
+
+        function GetPictures(idPicture) {
+           
+            $.ajax({
+                type: 'Get',
+                dataType: 'html',
+                url: '/ImageProducts/ViewImage/' + idPicture,
+                async: true,
+                cache:true,
+                contentType: "image/jpeg"
+
+            })
+                .done(function (result,testStatus,request) {
+                   
+                    //console.log("Identifiant " + idPicture);
+                    //console.log(request.getResponseHeader('Content-Type'));
+                 
+                    var mypicture = $("#img-thumb-" + idPicture);
+                    mypicture.attr("src", "ImageProducts/ViewImage/" + idPicture);
+                    
+                    //console.log(testStatus);
+                   
+                }).fail(function (xhr) {
+                    console.log('error : ' + xhr.status + ' - '
+                        + xhr.statusText + ' - ' + xhr.responseText);
+                });
+        };
+
+
+
+    </script>

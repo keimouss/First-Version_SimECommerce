@@ -1,0 +1,915 @@
+﻿<body>
+
+
+    <div class="ajax-loading-block-window" style="display: none">
+    </div>
+    <div id="dialog-notifications-success" title="Notification" style="display:none;">
+    </div>
+    <div id="dialog-notifications-error" title="Error" style="display:none;">
+    </div>
+    <div id="dialog-notifications-warning" title="Warning" style="display:none;">
+    </div>
+    <div id="bar-notification" class="bar-notification">
+        <span class="close" title="Close">&nbsp;</span>
+    </div>
+
+
+    <!--[if lte IE 8]>
+        <div style="clear:both;height:59px;text-align:center;position:relative;">
+            <a href="http://www.microsoft.com/windows/internet-explorer/default.aspx" target="_blank">
+                <img src="/Themes/DefaultClean/Content/images/ie_warning.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+            </a>
+        </div>
+    <![endif]-->
+
+
+    <div class="master-wrapper-page">
+
+        <div class="header">
+            <div class="header-upper">
+                <div class="header-selectors-wrapper">
+                    <div class="currency-selector">
+                        <select id="customerCurrency" name="customerCurrency" onchange="setLocation(this.value);" aria-label="Currency selector">
+                            <option selected="selected" value="http://demo.nopcommerce.com/changecurrency/1?returnurl=%2F">US Dollar</option>
+                            <option value="http://demo.nopcommerce.com/changecurrency/6?returnurl=%2F">Euro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="header-links-wrapper">
+                    <div class="header-links">
+                        <ul>
+
+                            <li><a href="/register" class="ico-register">Register</a></li>
+                            <li><a href="/login" class="ico-login">Log in</a></li>
+                            <li>
+                                <a href="/wishlist" class="ico-wishlist">
+                                    <span class="wishlist-label">Wishlist</span>
+                                    <span class="wishlist-qty">(0)</span>
+                                </a>
+                            </li>
+                            <li id="topcartlink">
+                                <a href="/cart" class="ico-cart">
+                                    <span class="cart-label">Shopping cart</span>
+                                    <span class="cart-qty">(0)</span>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <div id="flyout-cart" class="flyout-cart">
+                        <div class="mini-shopping-cart">
+                            <div class="count">
+                                You have no items in your shopping cart.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="header-lower">
+                <div class="header-logo">
+                    <a href="/">
+                        <img title="" alt="nopCommerce demo store" src="http://demo.nopcommerce.com/Themes/DefaultClean/Content/images/logo.png">
+                    </a>
+                </div>
+                <div class="search-box store-search-box">
+                    <form method="get" id="small-search-box-form" action="/search">
+                        <input type="text" class="search-box-text ui-autocomplete-input" id="small-searchterms" autocomplete="off" name="q" placeholder="Search store" aria-label="Search store">
+
+                        <input type="submit" class="button-1 search-box-button" value="Search">
+
+
+
+                    </form>
+                    <ul id="ui-id-1" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front" style="display: none;"></ul>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="header-menu">
+            <ul class="top-menu">
+
+                <li>
+                    <a href="/computers">
+                        Computers
+                    </a>
+                    <div class="sublist-toggle"></div>
+                    <ul class="sublist first-level">
+                        <li>
+                            <a href="/desktops">
+                                Desktops
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/notebooks">
+                                Notebooks
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/software">
+                                Software
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/electronics">
+                        Electronics
+                    </a>
+                    <div class="sublist-toggle"></div>
+                    <ul class="sublist first-level">
+                        <li>
+                            <a href="/camera-photo">
+                                Camera &amp; photo
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/cell-phones">
+                                Cell phones
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/others">
+                                Others
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/apparel">
+                        Apparel
+                    </a>
+                    <div class="sublist-toggle"></div>
+                    <ul class="sublist first-level">
+                        <li>
+                            <a href="/shoes">
+                                Shoes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/clothing">
+                                Clothing
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/accessories">
+                                Accessories
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/digital-downloads">
+                        Digital downloads
+                    </a>
+                </li>
+                <li>
+                    <a href="/books">
+                        Books
+                    </a>
+                </li>
+                <li>
+                    <a href="/jewelry">
+                        Jewelry
+                    </a>
+                </li>
+                <li>
+                    <a href="/gift-cards">
+                        Gift Cards
+                    </a>
+                </li>
+            </ul>
+            <div class="menu-toggle">Categories</div>
+            <ul class="top-menu mobile">
+
+                <li>
+                    <a href="/computers">
+                        Computers
+                    </a>
+                    <div class="sublist-toggle"></div>
+                    <ul class="sublist first-level">
+                        <li>
+                            <a href="/desktops">
+                                Desktops
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/notebooks">
+                                Notebooks
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/software">
+                                Software
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/electronics">
+                        Electronics
+                    </a>
+                    <div class="sublist-toggle"></div>
+                    <ul class="sublist first-level">
+                        <li>
+                            <a href="/camera-photo">
+                                Camera &amp; photo
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/cell-phones">
+                                Cell phones
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/others">
+                                Others
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/apparel">
+                        Apparel
+                    </a>
+                    <div class="sublist-toggle"></div>
+                    <ul class="sublist first-level">
+                        <li>
+                            <a href="/shoes">
+                                Shoes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/clothing">
+                                Clothing
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/accessories">
+                                Accessories
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/digital-downloads">
+                        Digital downloads
+                    </a>
+                </li>
+                <li>
+                    <a href="/books">
+                        Books
+                    </a>
+                </li>
+                <li>
+                    <a href="/jewelry">
+                        Jewelry
+                    </a>
+                </li>
+                <li>
+                    <a href="/gift-cards">
+                        Gift Cards
+                    </a>
+                </li>
+            </ul>
+
+
+        </div>
+        <div class="master-wrapper-content">
+
+
+            <div class="master-column-wrapper">
+                <div class="center-1">
+
+                    <div class="page home-page">
+                        <div class="page-body">
+
+                            <div class="slider-wrapper theme-custom">
+                                <div id="nivo-slider" class="nivoSlider">
+
+                                    <a href="http://demo.nopcommerce.com/" aria-label="" class="nivo-imageLink" style="display: block;">
+                                        <img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" data-thumb="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" data-transition="" alt="" title="" style="width: 1200px; visibility: hidden; display: inline;">
+                                    </a>
+
+
+                                    <a href="http://demo.nopcommerce.com/" aria-label="" class="nivo-imageLink" style="display: none;">
+                                        <img src="http://demo.nopcommerce.com/images/thumbs/0000080_banner_2.jpg" data-thumb="http://demo.nopcommerce.com/images/thumbs/0000080_banner_2.jpg" data-transition="" alt="" title="" style="width: 1200px; visibility: hidden; display: inline;">
+                                    </a>
+
+
+
+
+
+
+                                    <img class="nivo-main-image" src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="height: 500px; width: 1200px;"><div class="nivo-caption"></div><div class="nivo-directionNav"><a class="nivo-prevNav">Prev</a><a class="nivo-nextNav">Next</a></div><div class="nivo-box" name="0" rel="0" style="opacity: 1; left: 0px; top: 0px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-0px; left:-0px;"></div><div class="nivo-box" name="1" rel="0" style="opacity: 1; left: 150px; top: 0px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-0px; left:-150px;"></div><div class="nivo-box" name="2" rel="0" style="opacity: 1; left: 300px; top: 0px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-0px; left:-300px;"></div><div class="nivo-box" name="3" rel="0" style="opacity: 1; left: 450px; top: 0px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-0px; left:-450px;"></div><div class="nivo-box" name="4" rel="0" style="opacity: 1; left: 600px; top: 0px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-0px; left:-600px;"></div><div class="nivo-box" name="5" rel="0" style="opacity: 1; left: 750px; top: 0px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-0px; left:-750px;"></div><div class="nivo-box" name="6" rel="0" style="opacity: 1; left: 900px; top: 0px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-0px; left:-900px;"></div><div class="nivo-box" name="7" rel="0" style="opacity: 1; left: 1050px; top: 0px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-0px; left:-1050px;"></div><div class="nivo-box" name="0" rel="1" style="opacity: 1; left: 0px; top: 125px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-125px; left:-0px;"></div><div class="nivo-box" name="1" rel="1" style="opacity: 1; left: 150px; top: 125px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-125px; left:-150px;"></div><div class="nivo-box" name="2" rel="1" style="opacity: 1; left: 300px; top: 125px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-125px; left:-300px;"></div><div class="nivo-box" name="3" rel="1" style="opacity: 1; left: 450px; top: 125px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-125px; left:-450px;"></div><div class="nivo-box" name="4" rel="1" style="opacity: 1; left: 600px; top: 125px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-125px; left:-600px;"></div><div class="nivo-box" name="5" rel="1" style="opacity: 1; left: 750px; top: 125px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-125px; left:-750px;"></div><div class="nivo-box" name="6" rel="1" style="opacity: 1; left: 900px; top: 125px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-125px; left:-900px;"></div><div class="nivo-box" name="7" rel="1" style="opacity: 1; left: 1050px; top: 125px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-125px; left:-1050px;"></div><div class="nivo-box" name="0" rel="2" style="opacity: 1; left: 0px; top: 250px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-250px; left:-0px;"></div><div class="nivo-box" name="1" rel="2" style="opacity: 1; left: 150px; top: 250px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-250px; left:-150px;"></div><div class="nivo-box" name="2" rel="2" style="opacity: 1; left: 300px; top: 250px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-250px; left:-300px;"></div><div class="nivo-box" name="3" rel="2" style="opacity: 1; left: 450px; top: 250px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-250px; left:-450px;"></div><div class="nivo-box" name="4" rel="2" style="opacity: 1; left: 600px; top: 250px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-250px; left:-600px;"></div><div class="nivo-box" name="5" rel="2" style="opacity: 1; left: 750px; top: 250px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-250px; left:-750px;"></div><div class="nivo-box" name="6" rel="2" style="opacity: 1; left: 900px; top: 250px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-250px; left:-900px;"></div><div class="nivo-box" name="7" rel="2" style="opacity: 1; left: 1050px; top: 250px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-250px; left:-1050px;"></div><div class="nivo-box" name="0" rel="3" style="opacity: 1; left: 0px; top: 375px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-375px; left:-0px;"></div><div class="nivo-box" name="1" rel="3" style="opacity: 1; left: 150px; top: 375px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-375px; left:-150px;"></div><div class="nivo-box" name="2" rel="3" style="opacity: 1; left: 300px; top: 375px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-375px; left:-300px;"></div><div class="nivo-box" name="3" rel="3" style="opacity: 1; left: 450px; top: 375px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-375px; left:-450px;"></div><div class="nivo-box" name="4" rel="3" style="opacity: 1; left: 600px; top: 375px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-375px; left:-600px;"></div><div class="nivo-box" name="5" rel="3" style="opacity: 1; left: 750px; top: 375px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-375px; left:-750px;"></div><div class="nivo-box" name="6" rel="3" style="opacity: 1; left: 900px; top: 375px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-375px; left:-900px;"></div><div class="nivo-box" name="7" rel="3" style="opacity: 1; left: 1050px; top: 375px; width: 150px; height: 500px;"><img src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.jpg" style="position:absolute; width:1200px; height:auto; display:block; top:-375px; left:-1050px;"></div>
+                                </div><div class="nivo-controlNav"><a class="nivo-control active" rel="0">1</a><a class="nivo-control" rel="1">2</a></div>
+                            </div>
+
+                            <div class="topic-block">
+                                <div class="topic-block-title">
+                                    <h2>Welcome to our store</h2>
+                                </div>
+                                <div class="topic-block-body">
+                                    <p>Online shopping is the process consumers go through to purchase products or services over the Internet. You can edit this in the admin site.</p><p>If you have questions, see the <a href="http://docs.nopcommerce.com/">Documentation</a>, or post in the <a href="https://www.nopcommerce.com/boards/">Forums</a> at <a href="https://www.nopcommerce.com">nopCommerce.com</a></p>
+                                </div>
+                            </div>
+
+
+                            <div class="category-grid home-page-category-grid">
+                                <div class="item-grid">
+                                    <div class="item-box">
+                                        <div class="category-item">
+                                            <h2 class="title">
+                                                <a href="/electronics" title="Show products in category Electronics">
+                                                    Electronics
+                                                </a>
+                                            </h2>
+                                            <div class="picture">
+                                                <a href="/electronics" title="Show products in category Electronics">
+                                                    <img alt="Picture for category Electronics" src="http://demo.nopcommerce.com/images/thumbs/0000005_electronics_450.jpeg" title="Show products in category Electronics">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-box">
+                                        <div class="category-item">
+                                            <h2 class="title">
+                                                <a href="/apparel" title="Show products in category Apparel">
+                                                    Apparel
+                                                </a>
+                                            </h2>
+                                            <div class="picture">
+                                                <a href="/apparel" title="Show products in category Apparel">
+                                                    <img alt="Picture for category Apparel" src="http://demo.nopcommerce.com/images/thumbs/0000009_apparel_450.jpeg" title="Show products in category Apparel">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-box">
+                                        <div class="category-item">
+                                            <h2 class="title">
+                                                <a href="/digital-downloads" title="Show products in category Digital downloads">
+                                                    Digital downloads
+                                                </a>
+                                            </h2>
+                                            <div class="picture">
+                                                <a href="/digital-downloads" title="Show products in category Digital downloads">
+                                                    <img alt="Picture for category Digital downloads" src="http://demo.nopcommerce.com/images/thumbs/0000013_digital-downloads_450.jpeg" title="Show products in category Digital downloads">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="product-grid home-page-product-grid">
+                                <div class="title">
+                                    <strong>Featured products</strong>
+                                </div>
+                                <div class="item-grid">
+                                    <div class="item-box">
+                                        <div class="product-item" data-productid="1">
+                                            <div class="picture">
+                                                <a href="/build-your-own-computer" title="Show details for Build your own computer">
+                                                    <img alt="Picture of Build your own computer" src="http://demo.nopcommerce.com/images/thumbs/0000020_build-your-own-computer_415.jpeg" title="Show details for Build your own computer">
+                                                </a>
+                                            </div>
+                                            <div class="details">
+                                                <h2 class="product-title">
+                                                    <a href="/build-your-own-computer">Build your own computer</a>
+                                                </h2>
+                                                <div class="product-rating-box" title="7 review(s)">
+                                                    <div class="rating">
+                                                        <div style="width: 80%">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="description">
+                                                    Build it
+                                                </div>
+                                                <div class="add-info">
+
+                                                    <div class="prices">
+                                                        <span class="price actual-price">$1,200.00</span>
+                                                    </div>
+
+                                                    <div class="buttons">
+                                                        <input type="button" value="Add to cart" class="button-2 product-box-add-to-cart-button" onclick="AjaxCart.addproducttocart_catalog('/addproducttocart/catalog/1/1/1');return false;">
+                                                        <input type="button" value="Add to compare list" title="Add to compare list" class="button-2 add-to-compare-list-button" onclick="AjaxCart.addproducttocomparelist('/compareproducts/add/1');return false;">
+                                                        <input type="button" value="Add to wishlist" title="Add to wishlist" class="button-2 add-to-wishlist-button" onclick="AjaxCart.addproducttocart_catalog('/addproducttocart/catalog/1/2/1');return false;">
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="item-box">
+                                        <div class="product-item" data-productid="4">
+                                            <div class="picture">
+                                                <a href="/apple-macbook-pro-13-inch" title="Show details for Apple MacBook Pro 13-inch">
+                                                    <img alt="Picture of Apple MacBook Pro 13-inch" src="http://demo.nopcommerce.com/images/thumbs/0000024_apple-macbook-pro-13-inch_415.jpeg" title="Show details for Apple MacBook Pro 13-inch">
+                                                </a>
+                                            </div>
+                                            <div class="details">
+                                                <h2 class="product-title">
+                                                    <a href="/apple-macbook-pro-13-inch">Apple MacBook Pro 13-inch</a>
+                                                </h2>
+                                                <div class="product-rating-box" title="119 review(s)">
+                                                    <div class="rating">
+                                                        <div style="width: 74%">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="description">
+                                                    A groundbreaking Retina display. A new force-sensing trackpad. All-flash architecture. Powerful dual-core and quad-core Intel processors. Together, these features take the notebook to a new level of performance. And they will do the same for you in everything you create.
+                                                </div>
+                                                <div class="add-info">
+
+                                                    <div class="prices">
+                                                        <span class="price actual-price">$1,800.00</span>
+                                                    </div>
+
+                                                    <div class="buttons">
+                                                        <input type="button" value="Add to compare list" title="Add to compare list" class="button-2 add-to-compare-list-button" onclick="AjaxCart.addproducttocomparelist('/compareproducts/add/4');return false;">
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="item-box">
+                                        <div class="product-item" data-productid="18">
+                                            <div class="picture">
+                                                <a href="/htc-one-m8-android-l-50-lollipop" title="Show details for HTC One M8 Android L 5.0 Lollipop">
+                                                    <img alt="Picture of HTC One M8 Android L 5.0 Lollipop" src="http://demo.nopcommerce.com/images/thumbs/0000041_htc-one-m8-android-l-50-lollipop_415.jpeg" title="Show details for HTC One M8 Android L 5.0 Lollipop">
+                                                </a>
+                                            </div>
+                                            <div class="details">
+                                                <h2 class="product-title">
+                                                    <a href="/htc-one-m8-android-l-50-lollipop">HTC One M8 Android L 5.0 Lollipop</a>
+                                                </h2>
+                                                <div class="product-rating-box" title="5 review(s)">
+                                                    <div class="rating">
+                                                        <div style="width: 84%">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="description">
+                                                    HTC - One (M8) 4G LTE Cell Phone with 32GB Memory - Gunmetal (Sprint)
+                                                </div>
+                                                <div class="add-info">
+
+                                                    <div class="prices">
+                                                        <span class="price actual-price">$245.00</span>
+                                                    </div>
+
+                                                    <div class="buttons">
+                                                        <input type="button" value="Add to compare list" title="Add to compare list" class="button-2 add-to-compare-list-button" onclick="AjaxCart.addproducttocomparelist('/compareproducts/add/18');return false;">
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="item-box">
+                                        <div class="product-item" data-productid="43">
+                                            <div class="picture">
+                                                <a href="/25-virtual-gift-card" title="Show details for $25 Virtual Gift Card">
+                                                    <img alt="Picture of $25 Virtual Gift Card" src="http://demo.nopcommerce.com/images/thumbs/0000074_25-virtual-gift-card_415.jpeg" title="Show details for $25 Virtual Gift Card">
+                                                </a>
+                                            </div>
+                                            <div class="details">
+                                                <h2 class="product-title">
+                                                    <a href="/25-virtual-gift-card">$25 Virtual Gift Card</a>
+                                                </h2>
+                                                <div class="product-rating-box" title="3 review(s)">
+                                                    <div class="rating">
+                                                        <div style="width: 60%">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="description">
+                                                    $25 Gift Card. Gift Cards must be redeemed through our site Web site toward the purchase of eligible products.
+                                                </div>
+                                                <div class="add-info">
+
+                                                    <div class="prices">
+                                                        <span class="price actual-price">$25.00</span>
+                                                    </div>
+
+                                                    <div class="buttons">
+                                                        <input type="button" value="Add to cart" class="button-2 product-box-add-to-cart-button" onclick="AjaxCart.addproducttocart_catalog('/addproducttocart/catalog/43/1/1');return false;">
+                                                        <input type="button" value="Add to compare list" title="Add to compare list" class="button-2 add-to-compare-list-button" onclick="AjaxCart.addproducttocomparelist('/compareproducts/add/43');return false;">
+                                                        <input type="button" value="Add to wishlist" title="Add to wishlist" class="button-2 add-to-wishlist-button" onclick="AjaxCart.addproducttocart_catalog('/addproducttocart/catalog/43/2/1');return false;">
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="news-list-homepage">
+                                <div class="title">
+                                    <strong>News</strong>
+                                </div>
+                                <div class="news-items">
+                                    <div class="news-item">
+                                        <div class="news-head">
+                                            <a class="news-title" href="/new-online-store-is-open">New online store is open!</a>
+                                            <span class="news-date">-Thursday, July 26, 2018</span>
+                                        </div>
+                                        <div class="news-body">
+                                            The new nopCommerce store is open now! We are very excited to offer our new range of products. We will be constantly adding to our range so please register on our site.
+                                        </div>
+                                        <div class="buttons">
+                                            <a href="/new-online-store-is-open" class="read-more">details</a>
+                                        </div>
+                                    </div>
+                                    <div class="news-item">
+                                        <div class="news-head">
+                                            <a class="news-title" href="/nopcommerce-new-release">nopCommerce new release!</a>
+                                            <span class="news-date">-Thursday, July 26, 2018</span>
+                                        </div>
+                                        <div class="news-body">
+                                            nopCommerce includes everything you need to begin your e-commerce online store. We have thought of everything and it's all included! nopCommerce is a fully customizable shopping cart
+                                        </div>
+                                        <div class="buttons">
+                                            <a href="/nopcommerce-new-release" class="read-more">details</a>
+                                        </div>
+                                    </div>
+                                    <div class="news-item">
+                                        <div class="news-head">
+                                            <a class="news-title" href="/about-nopcommerce">About nopCommerce</a>
+                                            <span class="news-date">-Thursday, July 26, 2018</span>
+                                        </div>
+                                        <div class="news-body">
+                                            It's stable and highly usable. From downloads to documentation, www.nopCommerce.com offers a comprehensive base of information, resources, and support to the nopCommerce community.
+                                        </div>
+                                        <div class="buttons">
+                                            <a href="/about-nopcommerce" class="read-more">details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="view-all">
+                                    <a href="/news">View News Archive</a>
+                                </div>
+                            </div>
+
+
+                            <div class="home-page-polls">
+                                <div class="title">
+                                    <strong>Community poll</strong>
+                                </div>
+                                <div class="poll" id="poll-block-1">
+                                    <strong class="poll-display-text">Do you like nopCommerce?</strong>
+                                    <ul class="poll-options">
+                                        <li class="answer">
+                                            <input id="pollanswers-1" type="radio" name="pollanswers-1" value="1">
+                                            <label for="pollanswers-1">Excellent</label>
+                                        </li>
+                                        <li class="answer">
+                                            <input id="pollanswers-2" type="radio" name="pollanswers-1" value="2">
+                                            <label for="pollanswers-2">Good</label>
+                                        </li>
+                                        <li class="answer">
+                                            <input id="pollanswers-3" type="radio" name="pollanswers-1" value="3">
+                                            <label for="pollanswers-3">Poor</label>
+                                        </li>
+                                        <li class="answer">
+                                            <input id="pollanswers-4" type="radio" name="pollanswers-1" value="4">
+                                            <label for="pollanswers-4">Very bad</label>
+                                        </li>
+                                    </ul>
+                                    <div class="buttons">
+                                        <input type="button" value="Vote" id="vote-poll-1" class="button-2 vote-poll-button">
+                                        <span id="poll-voting-progress-1" style="display: none;" class="please-wait">Wait...</span>
+                                    </div>
+                                    <div class="poll-vote-error" id="block-poll-vote-error-1" style="display:none">
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="footer">
+            <div class="footer-upper">
+                <div class="footer-block information">
+                    <div class="title">
+                        <strong>Information</strong>
+                    </div>
+                    <ul class="list">
+                        <li><a href="/sitemap">Sitemap</a></li>
+                        <li><a href="/vendortermsofservice"></a></li>
+                        <li><a href="/shipping-returns">Shipping &amp; returns</a></li>
+                        <li><a href="/privacy-notice">Privacy notice</a></li>
+                        <li><a href="/conditions-of-use">Conditions of Use</a></li>
+                        <li><a href="/about-us">About us</a></li>
+                        <li><a href="/contactus">Contact us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-block customer-service">
+                    <div class="title">
+                        <strong>Customer service</strong>
+                    </div>
+                    <ul class="list">
+                        <li><a href="/search">Search</a> </li>
+                        <li><a href="/news">News</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/recentlyviewedproducts">Recently viewed products</a></li>
+                        <li><a href="/compareproducts">Compare products list</a></li>
+                        <li><a href="/newproducts">New products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-block my-account">
+                    <div class="title">
+                        <strong>My account</strong>
+                    </div>
+                    <ul class="list">
+                        <li><a href="/customer/info">My account</a></li>
+                        <li><a href="/order/history">Orders</a></li>
+                        <li><a href="/customer/addresses">Addresses</a></li>
+                        <li><a href="/cart">Shopping cart</a></li>
+                        <li><a href="/wishlist">Wishlist</a></li>
+                        <li><a href="/vendor/apply">Apply for vendor account</a></li>
+                    </ul>
+                </div>
+                <div class="footer-block follow-us">
+                    <div class="social">
+                        <div class="title">
+                            <strong>Follow us</strong>
+                        </div>
+                        <ul class="networks">
+                            <li class="facebook"><a href="http://www.facebook.com/nopCommerce" target="_blank">Facebook</a></li>
+                            <li class="twitter"><a href="https://twitter.com/nopCommerce" target="_blank">Twitter</a></li>
+                            <li class="rss"><a href="/news/rss/1">RSS</a></li>
+                            <li class="youtube"><a href="http://www.youtube.com/user/nopCommerce" target="_blank">YouTube</a></li>
+                            <li class="google-plus"><a href="https://plus.google.com/+nopcommerce" target="_blank">Google+</a></li>
+                        </ul>
+                    </div>
+                    <div class="newsletter">
+                        <div class="title">
+                            <strong>Newsletter</strong>
+                        </div>
+                        <div class="newsletter-subscribe" id="newsletter-subscribe-block">
+                            <div class="newsletter-email">
+                                <input id="newsletter-email" class="newsletter-subscribe-text" placeholder="Enter your email here..." aria-label="Sign up for our newsletter" type="email" name="NewsletterEmail" value="">
+                                <input type="button" value="Subscribe" id="newsletter-subscribe-button" class="button-1 newsletter-subscribe-button">
+                            </div>
+                            <div class="newsletter-validation">
+                                <span id="subscribe-loading-progress" style="display: none;" class="please-wait">Wait...</span>
+                                <span class="field-validation-valid" data-valmsg-for="NewsletterEmail" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="newsletter-result" id="newsletter-result-block"></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="footer-lower">
+                <div class="footer-info">
+                    <span class="footer-disclaimer">Copyright © 2019 nopCommerce demo store. All rights reserved.</span>
+                </div>
+                <div class="footer-powered-by">
+                    Powered by <a href="https://www.nopcommerce.com/">nopCommerce</a>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+
+    <script src="/bundles/eteuruw1frdgpfk-f-b1ybchhasaeme4glervstowwy.min.js"></script>
+
+    <script>
+        $(window).on('load', function () {
+            $('#nivo-slider').nivoSlider();
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#vote-poll-1').on('click', function () {
+                var pollAnswerId = $("input:radio[name=pollanswers-1]:checked").val();
+                if (typeof (pollAnswerId) == 'undefined') {
+                    alert('Please select an answer');
+                }
+                else {
+                    var voteProgress = $("#poll-voting-progress-1");
+                    voteProgress.show();
+                    $.ajax({
+                        cache: false,
+                        type: "POST",
+                        url: "/poll/vote",
+                        data: { "pollAnswerId": pollAnswerId },
+                        success: function (data) {
+                            voteProgress.hide();
+
+                            if (data.error) {
+                                $("#block-poll-vote-error-1").html(data.error);
+                                $('#block-poll-vote-error-1').fadeIn("slow").delay(2000).fadeOut("slow");
+                            }
+
+                            if (data.html) {
+                                $("#poll-block-1").replaceWith(data.html);
+                            }
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert('Failed to vote.');
+                            voteProgress.hide();
+                        }
+                    });
+                }
+                return false;
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.header').on('mouseenter', '#topcartlink', function () {
+                $('#flyout-cart').addClass('active');
+            });
+            $('.header').on('mouseleave', '#topcartlink', function () {
+                $('#flyout-cart').removeClass('active');
+            });
+            $('.header').on('mouseenter', '#flyout-cart', function () {
+                $('#flyout-cart').addClass('active');
+            });
+            $('.header').on('mouseleave', '#flyout-cart', function () {
+                $('#flyout-cart').removeClass('active');
+            });
+        });
+    </script>
+    <script>
+        $("#small-search-box-form").on("submit", function (event) {
+            if ($("#small-searchterms").val() == "") {
+                alert('Please enter some search keyword');
+                $("#small-searchterms").focus();
+                event.preventDefault();
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            var showLinkToResultSearch;
+            var searchText;
+            $('#small-searchterms').autocomplete({
+                delay: 500,
+                minLength: 3,
+                source: '/catalog/searchtermautocomplete',
+                appendTo: '.search-box',
+                select: function (event, ui) {
+                    $("#small-searchterms").val(ui.item.label);
+                    setLocation(ui.item.producturl);
+                    return false;
+                },
+                //append link to the end of list
+                open: function (event, ui) {
+                    //display link to search page
+                    if (showLinkToResultSearch) {
+                        searchText = document.getElementById("small-searchterms").value;
+                        $(".ui-autocomplete").append("<li class=\"ui-menu-item\" role=\"presentation\"><a href=\"/search?q=" + searchText + "\">View all results...</a></li>");
+                    }
+                }
+            })
+                .data("ui-autocomplete")._renderItem = function (ul, item) {
+                    var t = item.label;
+                    showLinkToResultSearch = item.showlinktoresultsearch;
+                    //html encode
+                    t = htmlEncode(t);
+                    return $("<li></li>")
+                        .data("item.autocomplete", item)
+                        .append("<a><span>" + t + "</span></a>")
+                        .appendTo(ul);
+                };
+        });
+    </script>
+    <script>
+        AjaxCart.init(false, '.header-links .cart-qty', '.header-links .wishlist-qty', '#flyout-cart');
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.menu-toggle').on('click', function () {
+                $(this).siblings('.top-menu.mobile').slideToggle('slow');
+            });
+            $('.top-menu.mobile .sublist-toggle').on('click', function () {
+                $(this).siblings('.sublist').slideToggle('slow');
+            });
+        });
+    </script>
+    <script>
+        function newsletter_subscribe(subscribe) {
+            var subscribeProgress = $("#subscribe-loading-progress");
+            subscribeProgress.show();
+            var postData = {
+                subscribe: subscribe,
+                email: $("#newsletter-email").val()
+            };
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url: "/subscribenewsletter",
+                data: postData,
+                success: function (data) {
+                    subscribeProgress.hide();
+                    $("#newsletter-result-block").html(data.Result);
+                    if (data.Success) {
+                        $('#newsletter-subscribe-block').hide();
+                        $('#newsletter-result-block').show();
+                    } else {
+                        $('#newsletter-result-block').fadeIn("slow").delay(2000).fadeOut("slow");
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('Failed to subscribe.');
+                    subscribeProgress.hide();
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $('#newsletter-subscribe-button').on('click', function () {
+                newsletter_subscribe('true');
+            });
+            $("#newsletter-email").on("keydown", function (event) {
+                if (event.keyCode == 13) {
+                    $("#newsletter-subscribe-button").trigger("click");
+                    return false;
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.footer-block .title').on('click', function () {
+                var e = window, a = 'inner';
+                if (!('innerWidth' in window)) {
+                    a = 'client';
+                    e = document.documentElement || document.body;
+                }
+                var result = { width: e[a + 'Width'], height: e[a + 'Height'] };
+                if (result.width < 769) {
+                    $(this).siblings('.list').slideToggle('slow');
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.block .title').on('click', function () {
+                var e = window, a = 'inner';
+                if (!('innerWidth' in window)) {
+                    a = 'client';
+                    e = document.documentElement || document.body;
+                }
+                var result = { width: e[a + 'Width'], height: e[a + 'Height'] };
+                if (result.width < 1001) {
+                    $(this).siblings('.listbox').slideToggle('slow');
+                }
+            });
+        });
+    </script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-7490022-2', 'nopcommerce.com');
+        ga('send', 'pageview');
+    </script>
+
+    <div role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible">
+    </div>
+</body>

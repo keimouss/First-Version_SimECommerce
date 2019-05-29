@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@*@model SimECommerce.ViewModels.HomeViewModel.IndexViewModel*@
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -13,30 +14,138 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
-              integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE="/>
+              integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" />
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SimECommerce</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm bg-white border-bottom">
+            <div class="nav navbar-nav">
+                <div class="col-sm-12">
+                    <div class="flex-sm-row">
+                        <div class="nav navbar-nav justify-content-between">
+                            <ul class="nav navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownChangeCurrency" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        US Dollar
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownChangeCurrency">
+                                        <li><a class="dropdown-item" href="#">Euro</a></li>
+                                        <li><a class="dropdown-item" href="#">Autre</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link">Créer Compte</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link">Log in</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark">
+                                        <span>Wishlist:</span>
+                                        (<span id="wish-qty"></span>)
+                                    </a>
+                                </li>
+                                <li class="nav-item" id="toppanierlink">
+                                    <div data-toggle="modal" data-target="#flyout-panier" id="viewlepanier">
+
+
+                                        <a class="nav-link text-dark">
+                                            <span>Le Panier:</span>
+                                            (<span id="qteproducts"></span>)
+                                        </a>
+
+                                        <div id="flyout-panier" class="modal fade" data-backdrop="false">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <div id="countPanier" class="countPanier"></div>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="mini-panier">
+
+                                                            <div id="itemsPanier" class="itemsPanier"></div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-between">
+                                                        <div id="totalpanier" class="totalPanier"></div>
+
+                                                        <div id="divGoToPanier" class="btn">
+                                                            @*<button id="buttonGoToPanier" type="button" class="btn btn-info" onclick="/catalog/LePanier">Le Panier</button>*@
+                                                            <a class="btn btn-info" href="/catalog/LePanier">Le Panier</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="flex-sm-row">
+                        <div class="nav navbar-nav justify-content-between">
+
+                            <div>
+                                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SimECommerce</a>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                        aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                            </div>
+                            <div>
+                                <form class="form-inline mr-sm-2">
+                                    <input class="form-control" type="search" placeholder="Search Store" aria-label="Search">
+                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
+        </nav>
+    </header>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm bg-white border-bottom mb-3">
+            @*<div class="nav navbar-nav">
+                    <div class="col-sm-12">
+                        <div class="flex-sm-row">
+                            <div class="nav navbar-nav">
+                                <ul class="nav navbar-nav">
+                                    @foreach (var parentcategorie in (List<Category>)ViewBag.parentcategories)
+                                    {
+                                        <li class="nav-item">
+                                            <div class="ui-btns btn-group" name="@parentcategorie.Name" data-idparentcategorie="@parentcategorie.Id" data-IdPicture="@parentcategorie.PictureId">
+                                                <a class="ui-btn1 nav-item nav-link active" data-toggle="dropdown" name="@parentcategorie.Name" data-idparentcategorie="@parentcategorie.Id" href="#">
+                                                    @parentcategorie.Name
+                                                </a>
+                                                <div class="dropdown-menu" id="dropdown-@parentcategorie.Id">
+                                                    <div class="table-hover"></div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>*@
+            @*@Html.ActionLink("NavigationCategories", "MenuCategories")*@
+           @await Component.InvokeAsync("MenuCategory")
+            
         </nav>
     </header>
     <div class="container">

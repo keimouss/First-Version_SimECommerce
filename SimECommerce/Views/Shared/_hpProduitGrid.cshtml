@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SimECommerce.Models.Product>
+
+<div class="row home-page-product-grid">
+    <div class="row title">
+        <strong>Featured products</strong>
+    </div>
+    <div class="row product-grid">
+        @foreach (var produit in Model)
+        {
+            <!--On fait une iteration sur les produits-->
+            <div class="col-4  item-box">
+                <div class="product-item" data-productid="@produit.Id">
+                    <div class="picture-box">
+                        <a href="#" title="Show details for @produit.Name">
+                            <img class="picture" alt="Picture of @produit.Name" src="ImageProducts/ViewImage/@produit.Id" title="Show details for @produit.Name">
+                        </a>
+                    </div>
+                    <div class="details">
+                        <h2 class="product-title">
+                            <a href="#">@produit.Name</a>
+                        </h2>
+                        <div class="product-rating-box" title="119 review(s)">
+                            <div class="rating">
+                                <div style="width: 74%">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="description">
+                            @produit.ShortDescription
+                        </div>
+                        <div class="add-info">
+
+                            <div class="prices">
+                                <span class="price actual-price">$@produit.Price</span>
+                            </div>
+
+                            <div class="buttons">
+                                <input type="button" value="Add to cart" class="btn btn-primary product-box-add-to-cart-button" onclick="addproductTopanier_catalog(@produit.Id);return false;">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+
+
+    </div>
+</div>
+<script src="~/js/AjaxPanier.js"></script>

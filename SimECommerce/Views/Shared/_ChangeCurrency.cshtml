@@ -1,0 +1,8 @@
+﻿@model SimECommerce.ViewModels.CurrencyChangeViewModel
+
+
+<div>
+    <form id="changeCurrency" asp-controller="Catalog" asp-action="ChangeCurrency" method="post" role="form" class="">
+        <select name="currencyviewmodel" onchange="this.form.submit();" asp-for="@Model.Name" asp-items="@Model.ChangeCurrencyList"></select>
+    </form>
+</div>

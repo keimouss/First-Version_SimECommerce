@@ -1,0 +1,283 @@
+﻿@model IEnumerable<SimECommerce.Models.Product>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductTypeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentGroupedProductId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VisibleIndividually)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdminComment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductTemplateId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShowOnHomePage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MetaKeywords)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MetaDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MetaTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsRental)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RentalPriceLength)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RentalPricePeriodId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsTaxExempt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaxCategoryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DisplayStockAvailability)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DisplayStockQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinStockQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderMinimumQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderMaximumQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DisableBuyButton)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DisableWishlistButton)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OldPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpecialPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpecialPriceStartDateTimeUtc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpecialPriceEndDateTimeUtc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Length)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Width)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Height)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvailableStartDateTimeUtc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvailableEndDateTimeUtc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DisplayOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Published)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Deleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOnUtc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedOnUtc)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductTypeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParentGroupedProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VisibleIndividually)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdminComment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductTemplateId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShowOnHomePage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaKeywords)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsRental)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentalPriceLength)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentalPricePeriodId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsTaxExempt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaxCategoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisplayStockAvailability)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisplayStockQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinStockQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderMinimumQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderMaximumQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisableBuyButton)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisableWishlistButton)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OldPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpecialPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpecialPriceStartDateTimeUtc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpecialPriceEndDateTimeUtc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Length)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Width)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Height)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvailableStartDateTimeUtc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvailableEndDateTimeUtc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisplayOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Published)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Deleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOnUtc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedOnUtc)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

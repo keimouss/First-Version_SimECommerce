@@ -1,0 +1,149 @@
+﻿@model IEnumerable<SimECommerce.Models.Product>
+@*
+    // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<div class="row product-grid">
+    <div class="row title">
+        @*<strong>Featured products</strong>*@
+    </div>
+    <div class="row product-grid">
+        @foreach (var produit in Model)
+        {
+            <!--On fait une iteration sur les produits-->
+            <div class="col-4  item-box">
+                <div class="product-item" data-productid="@produit.Id">
+                    <div class="picture-box">
+                        <a href="#" title="Show details for @produit.Name">
+                            <img class="picture" alt="Picture of @produit.Name" src="ImageProducts/ViewImage/@produit.Id" title="Show details for @produit.Name">
+                        </a>
+                    </div>
+                    <div class="details">
+                        <h2 class="product-title">
+                            <a href="#">@produit.Name</a>
+                        </h2>
+                        <div class="product-rating-box" title="119 review(s)">
+                            <div class="rating">
+                                <div style="width: 74%">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="description">
+                            @produit.ShortDescription
+                        </div>
+                        <div class="add-info">
+
+                            <div class="prices">
+                                <span class="price actual-price">$@produit.Price</span>
+                            </div>
+
+                            <div class="buttons">
+                                <input type="button" value="Add to cart" class="btn btn-primary product-box-add-to-cart-button" onclick="addproductTopanier_catalog(@produit.Id);return false;">
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+
+
+    </div>
+</div>
+@*<script src="~/js/AjaxPanier.js"></script>*@
+<script>
+
+
+    //$(document).ready(function () {
+
+    //    // console.log($(".img-thumbnail"));
+    //    $(".img-item").each(function (element) {
+    //        // console.log($(".img-thumbnail")[element]);
+
+    //        var idproducts = $(".img-item")[element].id.replace("img-item-", "");
+    //        //var imgdivs = $(".img-item")[element];
+    //        //var imgas = $(".img-item")[element].getElementsByTagName("IMG");
+    //        //console.log(idproducts);
+    //        GetPictures(idproducts);
+
+    //    });
+
+
+    //    $(".btn").click(function (data) {
+    //        //console.log(data);
+    //        var idproduct = data.currentTarget.dataset.idproduct;
+    //        //var quantite = data.currentTarget.dataset.quantite;
+    //        $.ajax({
+    //            type: "Post",
+    //            dataType: 'text',
+    //            url: "https://localhost:44329/Catalog/AjoutPanier/" + idproduct,
+    //            async: true,
+    //            contentType: "application/json",
+    //            success: (msg) => {
+
+    //                //renseigner les elements du div "flyout-panier" et "qteProduits"
+    //                var lpanier = $.parseJSON(msg);
+    //                //Modifie la qté de produits du panier
+    //                var $qteproducts = $("#qteproducts");
+    //                $qteproducts.empty();
+    //                $qteproducts.append(lpanier.qteProduits);
+
+    //                //renseigne le mini-panier
+
+    //                $("#countPanier").empty();
+    //                $("#countPanier").append("Vous avez: " + lpanier.qteProduits + "article(s).");
+
+    //                $("#itemsPanier").empty();
+    //                for (var i = 0; i < lpanier.lignes.length; i++) {
+    //                    //console.log("lignes:" + lpanier.lignes[i].nomProduit);
+    //                    $("#itemsPanier").append('<p>' + lpanier.lignes[i].nomProduit + '</p>');
+    //                }
+
+
+    //                $("#totalPanier").empty();
+    //                $("#totalPanier").append("Total Panier :" + lpanier.totalPanier);
+    //                //console.log(lpanier);
+    //                console.log("quantité " + lpanier.qteProduits);
+    //                for (var i = 0; i < lpanier.lignes.length; i++) {
+    //                    console.log("lignes:" + lpanier.lignes[i].nomProduit);
+    //                }
+    //            },
+    //            error:
+    //                (error) => {
+    //                    console.log("error", error);
+    //                    console.log(idproduct);
+    //                }
+    //        });
+
+    //    });
+
+
+
+    //    function GetPictures(idPicture) {
+
+    //        $.ajax({
+    //            type: 'Get',
+    //            dataType: 'html',
+    //            url: '/ImageProducts/ViewImage/' + idPicture,
+    //            async: true,
+    //            cache: true,
+    //            contentType: "image/jpeg"
+
+    //        })
+    //            .done(function (result, testStatus, request) {
+    //                //console.log("Identifiant " + idPicture);
+    //                //console.log(request.getResponseHeader('Content-Type'));
+    //                var mypicture = $("#img-thumb-" + idPicture);
+    //                mypicture.attr("src", "ImageProducts/ViewImage/" + idPicture);
+
+    //            }).fail(function (xhr) {
+    //                console.log('error : ' + xhr.status + ' - '
+    //                    + xhr.statusText + ' - ' + xhr.responseText);
+    //            });
+    //    };
+
+    //});
+
+</script>

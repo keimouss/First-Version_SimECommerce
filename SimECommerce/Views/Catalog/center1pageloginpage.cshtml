@@ -1,0 +1,71 @@
+﻿
+<div class="page login-page">
+    <div class="page-title">
+        <h1>Welcome, Please Sign In!</h1>
+    </div>
+
+    <div class="page-body">
+        <div class="customer-blocks">
+            <div class="new-wrapper checkout-as-guest-or-register-block">
+                <div class="title">
+                    <strong>Checkout as a guest or register</strong>
+                </div>
+                <div class="text">
+                    <div class="topic-block">
+                        <div class="topic-block-body">
+                            <p><strong>Register and save time!</strong><br>Register with us for future convenience:</p><ul><li>Fast and easy check out</li><li>Easy access to your order history and status</li></ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="buttons">
+                    <input type="button" class="button-1 checkout-as-guest-button" onclick="location.href='/checkout'" value="Checkout as Guest">
+                    <input type="button" class="button-1 register-button" onclick="location.href='http://demo.nopcommerce.com/register?returnurl=%2Fcart'" value="Register">
+                </div>
+            </div>
+            <div class="returning-wrapper fieldset">
+                <form method="post" action="/login?returnurl=%2Fcart" novalidate="novalidate">
+
+                    <div class="title">
+                        <strong>Returning Customer</strong>
+                    </div>
+                    <div class="form-fields">
+                        <div class="inputs">
+                            <label for="Email">Email:</label>
+                            <input class="email" autofocus="autofocus" type="email" data-val="true" data-val-email="Wrong email" data-val-required="Please enter your email" id="Email" name="Email" value="">
+                            <span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="inputs">
+                            <label for="Password">Password:</label>
+                            <input class="password" type="password" id="Password" name="Password">
+                            <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="inputs reversed">
+                            <input type="checkbox" data-val="true" data-val-required="The Remember me? field is required." id="RememberMe" name="RememberMe" value="true">
+                            <label for="RememberMe">Remember me?</label>
+                            <span class="forgot-password">
+                                <a href="/passwordrecovery">Forgot password?</a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <input class="button-1 login-button" type="submit" value="Log in">
+                    </div>
+                    <input name="__RequestVerificationToken" type="hidden" value="CfDJ8Doj6e8XWd1NkfbOWq5AdDtWI4wFH65tYOO_LUJxrZ23eJDne4o1OetIvvX5KKOcUv1iLiQeJhmupotECDxQP_yyPCtOuB1lNluIjFssBFCpK69yD4EK3iIDkNZIgIrKFmHVBF6FaMPCpI_wQmSJiF4"><input name="RememberMe" type="hidden" value="false">
+                </form>
+            </div>
+        </div>
+        <div class="external-authentication">
+
+        </div>
+        <div class="topic-block">
+            <div class="topic-block-title">
+                <h2>About login / registration</h2>
+            </div>
+            <div class="topic-block-body">
+                <p>Put your login / registration information here. You can edit this in the admin site.</p>
+            </div>
+        </div>
+
+    </div>
+</div>

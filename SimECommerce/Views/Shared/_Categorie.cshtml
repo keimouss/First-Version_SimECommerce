@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SimECommerce.Models.Category>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<div>
+
+    @foreach (var item in Model)
+    {
+        <ul class="list-unstyled">
+            <li>
+                <a class="ui-btn" name="@item.Name" data-idcategorie="@item.Id" href="#">
+                    @item.Name
+                </a>
+            </li>
+        </ul>
+    }
+</div>
+<script>
+    $(document).ready(function () {
+
+        $(".ui-btn").click(function (data) {
+            // console.log(data);
+            var idcateg = data.currentTarget.dataset.idcategorie;
+
+            $.ajax({
+                type: "GET",
+                dataType: 'html',
+                url: "https://localhost:44329/Catalog/Products/" + idcateg,
+                async: true,
+                contentType: "application/x-www-form-urlencoded",
+                success: (msg) => {
+                    // console.log(msg);
+                    var $affichproducts = $("#affichageProduct");
+                    $affichproducts.empty();
+                    $affichproducts.append(msg);
+                },
+                error:
+                    (error) => {
+                        console.log("error", error);
+                        console.log(idcateg);
+                    }
+            });
+
+        });
+
+    });
+</script>
+<script src="~/js/AjaxPanier.js"></script>

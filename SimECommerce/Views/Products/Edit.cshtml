@@ -1,0 +1,240 @@
+﻿@model SimECommerce.Models.Product
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="ProductTypeId" class="control-label"></label>
+                <input asp-for="ProductTypeId" class="form-control" />
+                <span asp-validation-for="ProductTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ParentGroupedProductId" class="control-label"></label>
+                <input asp-for="ParentGroupedProductId" class="form-control" />
+                <span asp-validation-for="ParentGroupedProductId" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="VisibleIndividually" /> @Html.DisplayNameFor(model => model.VisibleIndividually)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortDescription" class="control-label"></label>
+                <input asp-for="ShortDescription" class="form-control" />
+                <span asp-validation-for="ShortDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FullDescription" class="control-label"></label>
+                <input asp-for="FullDescription" class="form-control" />
+                <span asp-validation-for="FullDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdminComment" class="control-label"></label>
+                <input asp-for="AdminComment" class="form-control" />
+                <span asp-validation-for="AdminComment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductTemplateId" class="control-label"></label>
+                <input asp-for="ProductTemplateId" class="form-control" />
+                <span asp-validation-for="ProductTemplateId" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="ShowOnHomePage" /> @Html.DisplayNameFor(model => model.ShowOnHomePage)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetaKeywords" class="control-label"></label>
+                <input asp-for="MetaKeywords" class="form-control" />
+                <span asp-validation-for="MetaKeywords" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetaDescription" class="control-label"></label>
+                <input asp-for="MetaDescription" class="form-control" />
+                <span asp-validation-for="MetaDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetaTitle" class="control-label"></label>
+                <input asp-for="MetaTitle" class="form-control" />
+                <span asp-validation-for="MetaTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsRental" /> @Html.DisplayNameFor(model => model.IsRental)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="RentalPriceLength" class="control-label"></label>
+                <input asp-for="RentalPriceLength" class="form-control" />
+                <span asp-validation-for="RentalPriceLength" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RentalPricePeriodId" class="control-label"></label>
+                <input asp-for="RentalPricePeriodId" class="form-control" />
+                <span asp-validation-for="RentalPricePeriodId" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsTaxExempt" /> @Html.DisplayNameFor(model => model.IsTaxExempt)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="TaxCategoryId" class="control-label"></label>
+                <input asp-for="TaxCategoryId" class="form-control" />
+                <span asp-validation-for="TaxCategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockQuantity" class="control-label"></label>
+                <input asp-for="StockQuantity" class="form-control" />
+                <span asp-validation-for="StockQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DisplayStockAvailability" /> @Html.DisplayNameFor(model => model.DisplayStockAvailability)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DisplayStockQuantity" /> @Html.DisplayNameFor(model => model.DisplayStockQuantity)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinStockQuantity" class="control-label"></label>
+                <input asp-for="MinStockQuantity" class="form-control" />
+                <span asp-validation-for="MinStockQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderMinimumQuantity" class="control-label"></label>
+                <input asp-for="OrderMinimumQuantity" class="form-control" />
+                <span asp-validation-for="OrderMinimumQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderMaximumQuantity" class="control-label"></label>
+                <input asp-for="OrderMaximumQuantity" class="form-control" />
+                <span asp-validation-for="OrderMaximumQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DisableBuyButton" /> @Html.DisplayNameFor(model => model.DisableBuyButton)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DisableWishlistButton" /> @Html.DisplayNameFor(model => model.DisableWishlistButton)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OldPrice" class="control-label"></label>
+                <input asp-for="OldPrice" class="form-control" />
+                <span asp-validation-for="OldPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpecialPrice" class="control-label"></label>
+                <input asp-for="SpecialPrice" class="form-control" />
+                <span asp-validation-for="SpecialPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpecialPriceStartDateTimeUtc" class="control-label"></label>
+                <input asp-for="SpecialPriceStartDateTimeUtc" class="form-control" />
+                <span asp-validation-for="SpecialPriceStartDateTimeUtc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpecialPriceEndDateTimeUtc" class="control-label"></label>
+                <input asp-for="SpecialPriceEndDateTimeUtc" class="form-control" />
+                <span asp-validation-for="SpecialPriceEndDateTimeUtc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weight" class="control-label"></label>
+                <input asp-for="Weight" class="form-control" />
+                <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Length" class="control-label"></label>
+                <input asp-for="Length" class="form-control" />
+                <span asp-validation-for="Length" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Width" class="control-label"></label>
+                <input asp-for="Width" class="form-control" />
+                <span asp-validation-for="Width" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Height" class="control-label"></label>
+                <input asp-for="Height" class="form-control" />
+                <span asp-validation-for="Height" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AvailableStartDateTimeUtc" class="control-label"></label>
+                <input asp-for="AvailableStartDateTimeUtc" class="form-control" />
+                <span asp-validation-for="AvailableStartDateTimeUtc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AvailableEndDateTimeUtc" class="control-label"></label>
+                <input asp-for="AvailableEndDateTimeUtc" class="form-control" />
+                <span asp-validation-for="AvailableEndDateTimeUtc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DisplayOrder" class="control-label"></label>
+                <input asp-for="DisplayOrder" class="form-control" />
+                <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Published" /> @Html.DisplayNameFor(model => model.Published)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Deleted" /> @Html.DisplayNameFor(model => model.Deleted)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedOnUtc" class="control-label"></label>
+                <input asp-for="CreatedOnUtc" class="form-control" />
+                <span asp-validation-for="CreatedOnUtc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdatedOnUtc" class="control-label"></label>
+                <input asp-for="UpdatedOnUtc" class="form-control" />
+                <span asp-validation-for="UpdatedOnUtc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>

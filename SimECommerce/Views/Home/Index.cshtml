@@ -1,8 +1,33 @@
-﻿@{
+﻿@model SimECommerce.ViewModels.HomeViewModel.IndexViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- Début partie principale -->
+
+<div class="page-body" id="affichageProduct">
+    <div class="slider-wrapper theme-custm"></div>
+    <!--slider-->
+    <div class="topic-block">
+        <h1 class="display-2 text-center">Welcome</h1>
+        <p class="text-center">Votre Site marchant Simplify eCommerce </p>
+    </div>
+    <!--Block de Bienvenue-->
+    @*<div class="category-grid home-page-category-grid"></div>*@
+    @await Html.PartialAsync("_hpCategoryGrid", Model.CategoriesHomePageList)
+
+    <!--home page categorie: on utilise une viewPartiel-->
+    @*<div class="product-grid home-page-product-grid"></div>*@
+
+    @await Html.PartialAsync("_hpProduitGrid", Model.ProductHomePageList)
+    <!--home page produit: on utilise une viewPartiel-->
+    <div class="news-list-home-page"></div>
+    <!--news list home page-->
+    <div class="home-page-polls"></div>
+    <!--home page polls:voter-->
 </div>
+
+<!-- Fin partie principale -->
+<script src="~/js/AjaxPanier.js"></script>
+

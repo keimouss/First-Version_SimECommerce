@@ -1,0 +1,56 @@
+﻿@model SimECommerce.Models.Picture
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Picture</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="PictureBinary" class="control-label"></label>
+                <input asp-for="PictureBinary" class="form-control" />
+                <span asp-validation-for="PictureBinary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MimeType" class="control-label"></label>
+                <input asp-for="MimeType" class="form-control" />
+                <span asp-validation-for="MimeType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeoFilename" class="control-label"></label>
+                <input asp-for="SeoFilename" class="form-control" />
+                <span asp-validation-for="SeoFilename" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AltAttribute" class="control-label"></label>
+                <input asp-for="AltAttribute" class="form-control" />
+                <span asp-validation-for="AltAttribute" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TitleAttribute" class="control-label"></label>
+                <input asp-for="TitleAttribute" class="form-control" />
+                <span asp-validation-for="TitleAttribute" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsNew" /> @Html.DisplayNameFor(model => model.IsNew)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
